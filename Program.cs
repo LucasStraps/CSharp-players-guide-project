@@ -1,11 +1,12 @@
 ﻿
-int programSelected = 0;
+int programSelected;
 
 Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
     "Please select a program from this list: \n" +
     "1- Triangle Area Calculator \n" +
     "2- Sister's Chocolate Eggs Distributor \n" +
-    "3- King Point Calculator");
+    "3- King Point Calculator \n" +
+    "4- The Defense of Consolas");
 
 programSelected = Convert.ToInt32(Console.ReadLine());
 
@@ -26,6 +27,11 @@ switch (Convert.ToInt32(programSelected))
         KingPointCalculator();
         Console.ReadKey();
         break;
+    case 4:
+        Console.Clear();
+        DefenseOfConsolas();
+        Console.ReadKey();
+        break; 
     default:
         break;
 
@@ -56,7 +62,7 @@ void SistersEggsCalculator ()
     Console.WriteLine("How many eggs was produced today?");
     eggsProduced = Convert.ToInt32(Console.ReadLine());
 
-    sistersEggs = eggsProduced / 4; //There is 4 sisters
+    sistersEggs = eggsProduced / 4; //There are 4 sisters
     duckbearEggs = eggsProduced % 4;
 
     Console.WriteLine($"Each sister gets {sistersEggs} eggs");
@@ -82,4 +88,29 @@ void KingPointCalculator()
     kingPoints = kingProvinces*provincePoints + kingDuchys*duchyPoints + kingEstate*estatePoints;
 
     Console.WriteLine($"The King holds {kingPoints} points");
+}
+void DefenseOfConsolas()
+{
+    int targetRow;
+    int targetCol;
+
+    Console.Title = "Defense of Consolas";
+
+    Console.WriteLine("What is the target row of the airship?");
+    targetRow = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("What is the target column of the airship?");
+    targetCol = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine("Deploy to the blocks:");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"({targetRow},{targetCol - 1})");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"({targetRow - 1},{targetCol})");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    Console.WriteLine($"({targetRow}, {targetCol + 1})");
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine($"({targetRow + 1}, {targetCol})");
+    Console.ForegroundColor = ConsoleColor.Black;
+
+    Console.Beep(440, 1000);
 }
