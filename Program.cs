@@ -1,43 +1,61 @@
 ﻿
 int programSelected;
 
-Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
-    "Please select a program from this list: \n" +
-    "1- Triangle Area Calculator \n" +
-    "2- Sister's Chocolate Eggs Distributor \n" +
-    "3- King Point Calculator \n" +
-    "4- The Defense of Consolas");
-
-programSelected = Convert.ToInt32(Console.ReadLine());
-
-switch (Convert.ToInt32(programSelected))
+loop();
+void loop()
 {
-    case 1:
-        Console.Clear();
-        CalculateTriangleArea();
-        Console.ReadKey();
-        break;
-    case 2:
-        Console.Clear();
-        SistersEggsCalculator();
-        Console.ReadKey();
-        break;
-    case 3:
-        Console.Clear();
-        KingPointCalculator();
-        Console.ReadKey();
-        break;
-    case 4:
-        Console.Clear();
-        DefenseOfConsolas();
-        Console.ReadKey();
-        break; 
-    default:
-        break;
+    do
+    {
+        Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
+        "Please select a program from this list: \n" +
+        "1- Triangle Area Calculator \n" +
+        "2- Sister's Chocolate Eggs Distributor \n" +
+        "3- King Point Calculator \n" +
+        "4- The Defense of Consolas");
+        String input = Console.ReadLine();
+        if (input.Length == 0)
+        {
+            loop();
+        }
+        programSelected = Convert.ToInt32(input);
 
+        menu(programSelected);
+    } while (programSelected != 0);
 }
 
-void CalculateTriangleArea() {
+
+void menu(Int32 programSelected)
+{
+    switch (programSelected)
+    {
+        case 1:
+            Console.Clear();
+            CalculateTriangleArea();
+            Console.ReadKey();
+            break;
+        case 2:
+            Console.Clear();
+            SistersEggsCalculator();
+            Console.ReadKey();
+            break;
+        case 3:
+            Console.Clear();
+            KingPointCalculator();
+            Console.ReadKey();
+            break;
+        case 4:
+            Console.Clear();
+            DefenseOfConsolas();
+            Console.ReadKey();
+            break;
+        default:
+            loop();
+            break;
+
+    }
+}
+void CalculateTriangleArea()
+{
     float triangleBase;
     float triangleHeight;
     float triangleArea;
@@ -53,7 +71,7 @@ void CalculateTriangleArea() {
     Console.WriteLine("The triangle area is: " + triangleArea);
 
 }
-void SistersEggsCalculator ()
+void SistersEggsCalculator()
 {
     int eggsProduced;
     int sistersEggs;
@@ -85,7 +103,7 @@ void KingPointCalculator()
     Console.WriteLine("How many estates does the King have? ");
     kingEstate = Convert.ToInt32(Console.ReadLine());
 
-    kingPoints = kingProvinces*provincePoints + kingDuchys*duchyPoints + kingEstate*estatePoints;
+    kingPoints = kingProvinces * provincePoints + kingDuchys * duchyPoints + kingEstate * estatePoints;
 
     Console.WriteLine($"The King holds {kingPoints} points");
 }
