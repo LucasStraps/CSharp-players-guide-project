@@ -1,27 +1,32 @@
-﻿using System.Reflection;
-
+﻿
 int programSelected = 0;
 
-Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book.");
-Console.WriteLine("Please select a program from this list:");
-Console.WriteLine("1- Triangle Area Calculator");
-Console.WriteLine("2- Sister's Chocolate Eggs Distributor");
-Console.WriteLine("3- King Point Calculator");
+Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
+    "Please select a program from this list: \n" +
+    "1- Triangle Area Calculator \n" +
+    "2- Sister's Chocolate Eggs Distributor \n" +
+    "3- King Point Calculator");
 
 programSelected = Convert.ToInt32(Console.ReadLine());
 
 switch (Convert.ToInt32(programSelected))
 {
     case 1:
+        Console.Clear();
         CalculateTriangleArea();
+        Console.ReadKey();
         break;
     case 2:
+        Console.Clear();
         SistersEggsCalculator();
+        Console.ReadKey();
         break;
     case 3:
+        Console.Clear();
         KingPointCalculator();
+        Console.ReadKey();
         break;
-     default:
+    default:
         break;
 
 }
@@ -54,8 +59,8 @@ void SistersEggsCalculator ()
     sistersEggs = eggsProduced / 4; //There is 4 sisters
     duckbearEggs = eggsProduced % 4;
 
-    Console.WriteLine("Each sister gets " + sistersEggs + " eggs");
-    Console.WriteLine("And the Duckbear gets " + duckbearEggs + " eggs");
+    Console.WriteLine($"Each sister gets {sistersEggs} eggs");
+    Console.WriteLine($"And the Duckbear gets {duckbearEggs} eggs");
 }
 void KingPointCalculator()
 {
@@ -76,5 +81,5 @@ void KingPointCalculator()
 
     kingPoints = kingProvinces*provincePoints + kingDuchys*duchyPoints + kingEstate*estatePoints;
 
-    Console.WriteLine("The King holds " + kingPoints + " points");
+    Console.WriteLine($"The King holds {kingPoints} points");
 }
