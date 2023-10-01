@@ -6,7 +6,8 @@ Console.WriteLine("This is the program were I coded most of the challanges from 
     "1- Triangle Area Calculator \n" +
     "2- Sister's Chocolate Eggs Distributor \n" +
     "3- King Point Calculator \n" +
-    "4- The Defense of Consolas");
+    "4- The Defense of Consolas \n" +
+    "5- Clocktower");
 
 programSelected = Convert.ToInt32(Console.ReadLine());
 
@@ -32,6 +33,11 @@ switch (Convert.ToInt32(programSelected))
         DefenseOfConsolas();
         Console.ReadKey();
         break; 
+    case 5:
+        Console.Clear();
+        ClockTower();
+        Console.ReadKey();
+        break;
     default:
         break;
 
@@ -113,4 +119,27 @@ void DefenseOfConsolas()
     Console.ForegroundColor = ConsoleColor.Black;
 
     Console.Beep(440, 1000);
+}
+void ClockTower()
+{
+    Console.Title = "ClockTower";
+    int input;
+
+    Console.WriteLine("Feed a number to the clock;");
+    input = Convert.ToInt32(Console.ReadLine());
+
+    bool isOdd = (input % 2 == 0);
+
+    if (isOdd)
+    {
+        Console.Clear();
+        Console.WriteLine("Tock");
+    }
+    else
+    {
+        Console.Clear();
+        Console.WriteLine("Tick");
+    }
+
+    Console.ReadKey();
 }
