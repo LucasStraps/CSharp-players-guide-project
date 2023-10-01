@@ -6,12 +6,14 @@ void loop()
 {
     do
     {
+        Console.Clear();
         Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
         "Please select a program from this list: \n" +
         "1- Triangle Area Calculator \n" +
         "2- Sister's Chocolate Eggs Distributor \n" +
         "3- King Point Calculator \n" +
-        "4- The Defense of Consolas");
+        "4- The Defense of Consolas \n" +
+        "5- Clocktower");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -46,6 +48,11 @@ void menu(Int32 programSelected)
         case 4:
             Console.Clear();
             DefenseOfConsolas();
+            Console.ReadKey();
+            break;
+        case 5:
+            Console.Clear();
+            ClockTower();
             Console.ReadKey();
             break;
         default:
@@ -128,7 +135,7 @@ void DefenseOfConsolas()
     Console.WriteLine($"({targetRow}, {targetCol + 1})");
     Console.ForegroundColor = ConsoleColor.Yellow;
     Console.WriteLine($"({targetRow + 1}, {targetCol})");
-    Console.ForegroundColor = ConsoleColor.Black;
+    Console.ForegroundColor = ConsoleColor.Gray;
 
     Console.Beep(440, 1000);
 }
@@ -152,6 +159,4 @@ void ClockTower()
         Console.Clear();
         Console.WriteLine("Tick");
     }
-
-    Console.ReadKey();
 }
