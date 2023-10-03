@@ -13,7 +13,8 @@ void loop()
         "2- Sister's Chocolate Eggs Distributor \n" +
         "3- King Point Calculator \n" +
         "4- The Defense of Consolas \n" +
-        "5- Clocktower");
+        "5- Clocktower \n" +
+        "6- Watchtower");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -53,6 +54,11 @@ void menu(Int32 programSelected)
         case 5:
             Console.Clear();
             ClockTower();
+            Console.ReadKey();
+            break;
+        case 6:
+            Console.Clear();
+            WatchTower();
             Console.ReadKey();
             break;
         default:
@@ -159,4 +165,29 @@ void ClockTower()
         Console.Clear();
         Console.WriteLine("Tick");
     }
+}
+void WatchTower()
+{
+    int x;
+    int y;
+    string xCardinalDirection;
+    string yCardinalDirection;
+
+    Console.WriteLine("The coordinates are relative to the watchtower. So it's possible for numbers to be negative.");
+    Console.WriteLine("What is the X coordinate of the enemy?");
+    x = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("What is the Y coordinate of the enemy?");
+    y = Convert.ToInt32(Console.ReadLine());
+
+    if (x > 0) xCardinalDirection = "east";
+    else if (x < 0) xCardinalDirection = "west";
+    else xCardinalDirection = "here";
+
+    if (y > 0) yCardinalDirection = "North";
+    else if (y < 0) yCardinalDirection = "South";
+    else yCardinalDirection = "here";
+
+    if (xCardinalDirection == "here" && yCardinalDirection == "here") Console.WriteLine("The enemy is here!");
+    else Console.WriteLine($"The enemy is to the {yCardinalDirection}{xCardinalDirection}!");
+            
 }
