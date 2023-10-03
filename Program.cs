@@ -9,12 +9,13 @@ void loop()
         Console.Clear();
         Console.WriteLine("This is the program were I coded most of the challanges from C# Players Guide book. \n" +
         "Please select a program from this list: \n" +
-        "1- Triangle Area Calculator \n" +
-        "2- Sister's Chocolate Eggs Distributor \n" +
-        "3- King Point Calculator \n" +
-        "4- The Defense of Consolas \n" +
-        "5- Clocktower \n" +
-        "6- Watchtower");
+        "1 - Triangle Area Calculator \n" +
+        "2 - Sister's Chocolate Eggs Distributor \n" +
+        "3 - King Point Calculator \n" +
+        "4 - The Defense of Consolas \n" +
+        "5 - Clocktower \n" +
+        "6 - Watchtower \n" +
+        "7 - Inventory Shop Price");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -59,6 +60,11 @@ void menu(Int32 programSelected)
         case 6:
             Console.Clear();
             WatchTower();
+            Console.ReadKey();
+            break;
+        case 7:
+            Console.Clear();
+            BuyingInventory();
             Console.ReadKey();
             break;
         default:
@@ -190,4 +196,57 @@ void WatchTower()
     if (xCardinalDirection == "here" && yCardinalDirection == "here") Console.WriteLine("The enemy is here!");
     else Console.WriteLine($"The enemy is to the {yCardinalDirection}{xCardinalDirection}!");
             
+}
+void BuyingInventory()
+{
+    string itemSelected;
+    int inputItem;
+    string name;
+    int itemPrice;
+
+    Console.WriteLine("What's your name?");
+    name = Console.ReadLine();
+
+    Console.WriteLine("The following items are available: \n" +
+        "1 - Rope \n" +
+        "2 - Torches \n" +
+        "3 - Climbing Equipment \n" +
+        "4 - Clean Water \n" +
+        "5 - Machete \n" +
+        "6 - Canoe \n" +
+        "7 - Food Supplies");
+    Console.WriteLine("What number do you want to see the price of?");
+    inputItem = Convert.ToInt32(Console.ReadLine());
+
+    itemSelected = inputItem switch
+    {
+        1 => "Rope",
+        2 => "Torch",
+        3 => "Climbing Equipment",
+        4 => "Clean Water",
+        5 => "Machete",
+        6 => "Canoe",
+        7 => "Food Supply",
+        _ => ""
+    };
+    itemPrice = itemSelected switch
+    {
+        "Rope" => 10,
+        "Torch" => 15,
+        "Climbing Equipment" => 25,
+        "Clean Water" => 1,
+        "Machete" => 20,
+        "Canoe" => 200,
+        "Food Supply" => 1,
+        _ => 0,
+    };
+
+    if (name == "Lucas" || name == "lucas") 
+        itemPrice /= 2;
+
+    if (itemSelected != "")
+        Console.WriteLine($"{itemSelected} cost {itemPrice} gold.");
+
+    else Console.WriteLine("The selected item is invalid");
+
 }
