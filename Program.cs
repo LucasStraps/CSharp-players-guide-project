@@ -16,7 +16,8 @@ void loop()
         "5 - Clocktower \n" +
         "6 - Watchtower \n" +
         "7 - Inventory Shop Price \n" +
-        "8 - The Prototype");
+        "8 - The Prototype \n" +
+        "9 - Magic Cannon");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -71,6 +72,11 @@ void menu(Int32 programSelected)
         case 8:
             Console.Clear();
             ThePrototype();
+            Console.ReadKey();
+            break;
+        case 9:
+            Console.Clear();
+            MagicCannon();
             Console.ReadKey();
             break;
         default:
@@ -279,6 +285,34 @@ void ThePrototype()
         else Console.WriteLine("You guessed the number!");
 
     } while (guess != number);
+}
+void MagicCannon()
+{
+    for (int i = 0; i <= 100; i++)
+    {
+        bool isFire = (i % 3 == 0);
+        bool isEletric = (i % 5 == 0);
 
-
+        if (!isFire && !isEletric)
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"{i}: Normal");
+        }
+        else if (isFire && !isEletric)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{i}: Fire");
+        }
+        else if (!isFire && isEletric)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{i}: Eletric");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"{i}: Fire and Eletric");
+        }
+    }
+    Console.ForegroundColor = ConsoleColor.Gray;
 }
