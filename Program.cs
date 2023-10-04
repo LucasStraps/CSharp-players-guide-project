@@ -32,58 +32,42 @@ void loop()
 
 void menu(Int32 programSelected)
 {
+    Console.Clear();
     switch (programSelected)
     {
         case 1:
-            Console.Clear();
             CalculateTriangleArea();
-            Console.ReadKey();
             break;
         case 2:
-            Console.Clear();
             SistersEggsCalculator();
-            Console.ReadKey();
             break;
         case 3:
-            Console.Clear();
             KingPointCalculator();
-            Console.ReadKey();
             break;
         case 4:
-            Console.Clear();
             DefenseOfConsolas();
-            Console.ReadKey();
             break;
         case 5:
-            Console.Clear();
             ClockTower();
-            Console.ReadKey();
             break;
         case 6:
-            Console.Clear();
             WatchTower();
-            Console.ReadKey();
             break;
         case 7:
-            Console.Clear();
             BuyingInventory();
-            Console.ReadKey();
             break;
         case 8:
-            Console.Clear();
             ThePrototype();
-            Console.ReadKey();
             break;
         case 9:
-            Console.Clear();
             MagicCannon();
-            Console.ReadKey();
             break;
         default:
             loop();
             break;
 
     }
+    Console.ReadKey();
 }
 void CalculateTriangleArea()
 {
