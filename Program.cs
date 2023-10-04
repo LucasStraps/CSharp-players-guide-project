@@ -15,7 +15,8 @@ void loop()
         "4 - The Defense of Consolas \n" +
         "5 - Clocktower \n" +
         "6 - Watchtower \n" +
-        "7 - Inventory Shop Price");
+        "7 - Inventory Shop Price \n" +
+        "8 - The Prototype");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -65,6 +66,11 @@ void menu(Int32 programSelected)
         case 7:
             Console.Clear();
             BuyingInventory();
+            Console.ReadKey();
+            break;
+        case 8:
+            Console.Clear();
+            ThePrototype();
             Console.ReadKey();
             break;
         default:
@@ -241,12 +247,38 @@ void BuyingInventory()
         _ => 0,
     };
 
-    if (name == "Lucas" || name == "lucas") 
+    if (name == "Lucas" || name == "lucas")
         itemPrice /= 2;
 
     if (itemSelected != "")
         Console.WriteLine($"{itemSelected} cost {itemPrice} gold.");
 
     else Console.WriteLine("The selected item is invalid");
+
+}
+void ThePrototype()
+{
+    int guess;
+    int number;
+
+    do
+    {
+        Console.WriteLine("User 1, enter a number between 0 and 100:");
+        number = Convert.ToInt32(Console.ReadLine());
+        Console.Clear();
+
+    } while (number < 0 || number > 100);
+    Console.WriteLine("User 2, guess the number.");
+    do
+    {
+        Console.WriteLine("What is your guess?");
+        guess = Convert.ToInt32(Console.ReadLine());
+
+        if (guess < number) Console.WriteLine($"{guess} is too low.");
+        else if (guess > number) Console.WriteLine($"{guess} is too high.");
+        else Console.WriteLine("You guessed the number!");
+
+    } while (guess != number);
+
 
 }
