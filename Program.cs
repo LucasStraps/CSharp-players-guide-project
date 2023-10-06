@@ -17,7 +17,8 @@ void loop()
         "6 - Watchtower \n" +
         "7 - Inventory Shop Price \n" +
         "8 - The Prototype \n" +
-        "9 - Magic Cannon");
+        "9 - Magic Cannon \n" +
+        "10 - Replicator D'To");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -61,6 +62,9 @@ void menu(Int32 programSelected)
             break;
         case 9:
             MagicCannon();
+            break;
+        case 10:
+            ReplicatorDTo();
             break;
         default:
             loop();
@@ -299,4 +303,23 @@ void MagicCannon()
         }
     }
     Console.ForegroundColor = ConsoleColor.Gray;
+}
+void ReplicatorDTo()
+{
+    int[] firstArray = new int[5];
+    int[] secondArray = new int[5];
+
+    Console.WriteLine("Type 5 numbers to replicate");
+    for (int i = 0; i < 5; i++)
+    {
+        Console.WriteLine("Type one number:");
+        firstArray[i] = Convert.ToInt32(Console.ReadLine());
+    }
+    Console.Clear();
+
+    for (int i = 0; i < 5; i++)
+    {
+        secondArray[i] = firstArray[i];
+        Console.WriteLine($"Original: {firstArray[i]} Copied: {secondArray[i]}");
+    }
 }
