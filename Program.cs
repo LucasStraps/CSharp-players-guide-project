@@ -18,7 +18,8 @@ void loop()
         "7 - Inventory Shop Price \n" +
         "8 - The Prototype \n" +
         "9 - Magic Cannon \n" +
-        "10 - Replicator D'To");
+        "10 - Replicator D'To \n" +
+        "11 - The Manticore Hunt");
         String input = Console.ReadLine();
         if (input.Length == 0)
         {
@@ -65,6 +66,9 @@ void menu(Int32 programSelected)
             break;
         case 10:
             ReplicatorDTo();
+            break;
+        case 11:
+            HuntManticore();
             break;
         default:
             loop();
@@ -321,5 +325,70 @@ void ReplicatorDTo()
     {
         secondArray[i] = firstArray[i];
         Console.WriteLine($"Original: {firstArray[i]} Copied: {secondArray[i]}");
+    }
+}
+void HuntManticore()
+{
+    int manticoreLocation;
+    int cityLife = 15;
+    int manticoreLife = 10;
+    int round = 1;
+    int cannonRange;
+    int cannonDamage;
+
+    Console.WriteLine("Player 1, how far away from the city do you want to station the Manticore?");
+    do
+    {
+        manticoreLocation = Convert.ToInt32(Console.ReadLine());
+    } while (manticoreLocation < 0 || manticoreLocation > 100);
+    Console.Clear();
+
+    Console.WriteLine("Player 2, it is your turn.");
+    while (cityLife >= 0 && manticoreLife >= 0)
+    {
+        cannonDamage = CannonDamage();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("-----------------------------------------------------------");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"Status: Round: {round} City: {cityLife}/15 Manticore: {manticoreLife}/10");
+        ForegroundDamageType();
+        Console.WriteLine($"The cannon is expected to deal {cannonDamage} this round.");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine($"Enter desired range:");
+        cannonRange = Convert.ToInt32(Console.ReadLine());
+
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        if (CannonShoot() == "DIRECT HIT") manticoreLife -= cannonDamage;
+        Console.WriteLine($"That round was a {CannonShoot()!}");
+
+        if (manticoreLife > 0) cityLife--;
+        round++;
+        Console.ForegroundColor = ConsoleColor.Gray;
+    }
+    if (manticoreLife <= 0) Console.WriteLine("The Manticore has been destroyed! The city of Consolas has been saved!");
+    else Console.WriteLine("The city of Consolas has been destroyed!");
+
+    int CannonDamage()
+    {
+        bool isFire = (round % 3 == 0);
+        bool isEletric = (round % 5 == 0);
+
+        if (!isFire && !isEletric) return 1;
+        else if (isFire && !isEletric) return 3;
+        else if (!isFire && isEletric) return 5;
+        else return 10;
+    }
+    string CannonShoot()
+    {
+        if (cannonRange > manticoreLocation) return "OVERSHOT";
+        else if (cannonRange < manticoreLocation) return "FELL SHORT";
+        else return "DIRECT HIT";
+    }
+    void ForegroundDamageType()
+    {
+        if (cannonDamage == 1) Console.ForegroundColor = ConsoleColor.Gray;
+        else if (cannonDamage == 3) Console.ForegroundColor = ConsoleColor.Red;
+        else if (cannonDamage == 5) Console.ForegroundColor = ConsoleColor.Yellow;
+        else if (cannonDamage == 10) Console.ForegroundColor = ConsoleColor.Blue;
     }
 }
